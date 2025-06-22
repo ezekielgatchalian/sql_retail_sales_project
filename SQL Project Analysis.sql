@@ -38,6 +38,14 @@ SELECT COUNT(*)
 FROM retail_sales
 ;
 
+SELECT COUNT(DISTINCT customer_id)
+FROM retail_sales
+;
+
+SELECT DISTINCT category
+FROM retail_sales
+;
+
 -- Data Cleaning
 
 -- TO FILTER ALL COLUMNS AND ROWS THAT HAVE NULL VALUE --
