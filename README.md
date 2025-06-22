@@ -19,26 +19,26 @@ This project is designed to demonstrate SQL skills and techniques typically used
 
 ### 1. Database Setup
 
-- **Database Creation**: The project starts by creating a database named `p1_retail_db`.
+- **Database Creation**: The project starts by creating a database named `sql_project_p2`.
 - **Table Creation**: A table named `retail_sales` is created to store the sales data. The table structure includes columns for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sale amount.
 
 ```sql
-CREATE DATABASE p1_retail_db;
-
+DROP TABLE IF EXISTS retail_sales;
 CREATE TABLE retail_sales
 (
-    transactions_id INT PRIMARY KEY,
-    sale_date DATE,	
-    sale_time TIME,
-    customer_id INT,	
-    gender VARCHAR(10),
-    age INT,
-    category VARCHAR(35),
-    quantity INT,
-    price_per_unit FLOAT,	
-    cogs FLOAT,
-    total_sale FLOAT
-);
+				transactions_id INT PRIMARY KEY,
+				sale_date DATE,
+				sale_time TIME,
+				customer_id INT,
+				gender VARCHAR(15),
+				age INT,
+				category VARCHAR(15),
+				quantiy INT,
+				price_per_unit FLOAT,
+				cogs FLOAT,
+				total_sale FLOAT
+)
+;
 ```
 
 ### 2. Data Exploration & Cleaning
@@ -49,21 +49,55 @@ CREATE TABLE retail_sales
 - **Null Value Check**: Check for any null values in the dataset and delete records with missing data.
 
 ```sql
-SELECT COUNT(*) FROM retail_sales;
-SELECT COUNT(DISTINCT customer_id) FROM retail_sales;
-SELECT DISTINCT category FROM retail_sales;
+SELECT COUNT(*)
+FROM retail_sales
+;
 
-SELECT * FROM retail_sales
-WHERE 
-    sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
-    gender IS NULL OR age IS NULL OR category IS NULL OR 
-    quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
+SELECT COUNT(DISTINCT customer_id)
+FROM retail_sales
+;
 
-DELETE FROM retail_sales
+SELECT DISTINCT category
+FROM retail_sales
+;
+
+
+-- TO FILTER ALL COLUMNS AND ROWS THAT HAVE NULL VALUE --
+
+SELECT *
+FROM retail_sales
 WHERE 
-    sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
-    gender IS NULL OR age IS NULL OR category IS NULL OR 
-    quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
+		transactions_id IS NULL OR
+		sale_date IS NULL OR
+        sale_time IS NULL OR
+        customer_id IS NULL OR
+        gender IS NULL OR
+        age IS NULL OR
+        category IS NULL OR
+        quantiy IS NULL OR
+        price_per_unit IS NULL OR
+        cogs IS NULL OR
+        total_sale IS NULL
+;
+
+-- TO DELETE ALL THE FILTERED COLUMNS AND ROW THAT HAVE NULL VALUE --
+
+DELETE
+FROM retail_sales
+WHERE
+		transactions_id IS NULL OR
+		sale_date IS NULL OR
+        sale_time IS NULL OR
+        customer_id IS NULL OR
+        gender IS NULL OR
+        age IS NULL OR
+        category IS NULL OR
+        quantiy IS NULL OR
+        price_per_unit IS NULL OR
+        cogs IS NULL OR
+        total_sale IS NULL
+;
+
 ```
 
 ### 3. Data Analysis & Findings
